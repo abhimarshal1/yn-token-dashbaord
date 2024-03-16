@@ -73,14 +73,8 @@ export default function Home() {
       <header className="w-full">
         <nav className="flex justify-between">
           <div>ynETH</div>
-          <div>
-            {!isActive ? (
-              <ConnectButton />
-            ) : (
-              <div className="bg-blue-500 px-4 py-2 text-white rounded-md">
-                {shortenAddress(address!)}
-              </div>
-            )}
+          <div className="text-black">
+            <ConnectButton />
           </div>
         </nav>
       </header>
@@ -152,7 +146,8 @@ export default function Home() {
                 {error && <p className="text-red-500">{error}</p>}
                 <button
                   type="submit"
-                  className="bg-blue-500 px-4 py-2 text-white rounded-md"
+                  className="bg-blue-500 px-4 py-2 text-white rounded-md disabled:opacity-60"
+                  disabled={!isActive}
                 >
                   Deposit
                 </button>

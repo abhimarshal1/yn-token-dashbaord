@@ -10,7 +10,7 @@ if (!projectId) throw new Error("Project ID is not defined");
 const metadata = {
   name: "YieldNest Assignment",
   description: "YieldNest Assignment",
-  url: "https://web3modal.com", // origin must match your domain & subdomain
+  url: "https://yn-token-dashbaord.vercel.app", // origin must match your domain & subdomain
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
@@ -24,5 +24,6 @@ export const config = defaultWagmiConfig({
   storage: createStorage({
     storage: cookieStorage,
   }),
+
   // ...wagmiOptions, // Optional - Override createConfig parameters
 });
