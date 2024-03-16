@@ -7,6 +7,7 @@ import useETHBalance from "@/hooks/useETHBalance";
 import useTokenData from "@/hooks/useTokenData";
 import useWeb3 from "@/hooks/useWeb3";
 import { shortenAddress } from "@/utils/common";
+import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { SyntheticEvent, useState } from "react";
 import { formatUnits, parseUnits } from "viem";
 import { usePublicClient, useWriteContract } from "wagmi";
@@ -19,6 +20,8 @@ export default function Home() {
   );
   const ethBalance = useETHBalance();
   const { writeContract, isPending } = useWriteContract();
+
+  const { open } = useWeb3Modal();
 
   const [amount, setAmount] = useState("");
   const [error, setError] = useState("");
@@ -67,14 +70,26 @@ export default function Home() {
       }
     );
   };
-  amount;
+
+  const handleConnect = () => {};
+
   return (
     <main className="min-h-screen p-8 lg:px-24 lg:py-8">
       <header className="w-full">
         <nav className="flex justify-between">
           <div>ynETH</div>
-          <div className="text-black">
-            <ConnectButton />
+          <div>
+            {!isActive ? (
+              <ConnectButton />
+            ) : (
+              <div
+                className="bg-blue-500 px-4 py-2 text-white rounded-md cursor-pointer"
+                role="button"
+                onClick={() => open({ view: "Account" })}
+              >
+                {shortenAddress(address!)}
+              </div>
+            )}
           </div>
         </nav>
       </header>
@@ -147,7 +162,7 @@ export default function Home() {
                 <button
                   type="submit"
                   className="bg-blue-500 px-4 py-2 text-white rounded-md disabled:opacity-60"
-                  disabled={!isActive}
+                  disabled={!isActive || isPending}
                 >
                   Deposit
                 </button>
