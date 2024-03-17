@@ -76,7 +76,7 @@ export default function Home() {
   return (
     <main className="min-h-screen p-8 lg:px-24 lg:py-8">
       <header className="w-full">
-        <nav className="flex justify-between">
+        <nav className="flex justify-between items-center">
           <div>ynETH</div>
           <div>
             {!isActive ? (
