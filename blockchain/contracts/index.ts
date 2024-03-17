@@ -4,7 +4,7 @@ import abi from "@/blockchain/contracts/ynETH/abi.json";
 
 export const contracts = {
   ynETH: {
-    address: "0x0091626e15caFd0F6Bc96dE7F12CEe444c0a212d" as Hash,
+    address: "0xE328dE37dD1F30bb83a2850C86B7A47f7cfCdbB7" as Hash,
     abi: abi as Abi,
   },
 };

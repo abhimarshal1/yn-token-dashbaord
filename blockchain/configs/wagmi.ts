@@ -1,7 +1,7 @@
 import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
 
 import { cookieStorage, createStorage } from "wagmi";
-import { goerli } from "wagmi/chains";
+import { holesky } from "wagmi/chains";
 
 export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
 
@@ -15,7 +15,7 @@ const metadata = {
 };
 
 // Create wagmiConfig
-const chains = [goerli] as const;
+const chains = [holesky] as const;
 export const config = defaultWagmiConfig({
   chains,
   projectId,
